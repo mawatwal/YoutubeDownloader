@@ -1,17 +1,23 @@
+# comment : https://pypi.org/project/pytube/
+# comment :install necessary libraries
+# comment : pytube - A pythonic library for downloading YouTube Videos.
 from pytube import YouTube
+# comment : specify the URL of the video to be downloaded
 link='https://www.youtube.com/watch?v=pbCw1FD22Bo'
 yt = YouTube(link)
 yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution')[-1].download()
-
-# from pytube import Playlist   # to download complete playlist 
-# playlist = Playlist(" ")
+# comment : to download complete playlist from the Youtube, un-comment the below lines of code
+# from pytube import Playlist    
+# playlist = Playlist("enter the starting url of the playlist ")
 # for video in playlist:
 #   video.streams.get_highest_resolution().download()
 
-#Youtube('https://www.youtube.com/watch?v=pbCw1FD22Bo').streams[0].download()   # for highest quality video download(720p)
+# comment: for highest quality video download (generally 720p because the higher versions have been modified by Youtube lately)
+# Youtube('https://www.youtube.com/watch?v=pbCw1FD22Bo').streams[0].download()   
 
-#print(yt.streams)   # for printing all the available streams
-#print(yt.streams.filter(progressive=True))  # to view progressive downloading streams; 720p and below
-#print(yt.streams.filter(subtype='mp4'))   # to list only mp4 streams
-#print(yt.streams.filter(subtype='mp4').filter(progressive=True))   # to list streams using given filter  
-#print(yt.streams.get_by_itag(22))   # to list streams by their itag
+# comment : for printing all the available streams with and without different filters
+# print(yt.streams)   
+#print(yt.streams.filter(progressive=True)) 
+#print(yt.streams.filter(subtype='mp4')) 
+#print(yt.streams.filter(subtype='mp4').filter(progressive=True))   
+#print(yt.streams.get_by_itag(22))
